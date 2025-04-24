@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { TransactionCard } from '@/components/TransactionCard';
 import { AddTransactionDialog } from '@/components/AddTransactionDialog';
@@ -10,6 +9,8 @@ interface Transaction {
   amount: number;
   person: string;
   date: Date;
+  purpose: string;
+  dueDate: Date;
   note?: string;
 }
 

@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { formatDistanceToNow } from 'date-fns';
-import { BadgeDollarSign, BadgeMinus } from 'lucide-react';
+import { formatDistanceToNow, format } from 'date-fns';
+import { BadgeDollarSign, BadgeMinus, Calendar } from 'lucide-react';
 import { Card } from './ui/card';
 import { cn } from '@/lib/utils';
 
@@ -10,6 +10,8 @@ interface TransactionCardProps {
   amount: number;
   person: string;
   date: Date;
+  purpose: string;
+  dueDate: Date;
   note?: string;
 }
 
@@ -18,6 +20,8 @@ export const TransactionCard = ({
   amount,
   person,
   date,
+  purpose,
+  dueDate,
   note,
 }: TransactionCardProps) => {
   return (
@@ -42,6 +46,11 @@ export const TransactionCard = ({
             <p className="text-sm text-gray-500">
               {formatDistanceToNow(date, { addSuffix: true })}
             </p>
+            <p className="text-sm text-gray-600 mt-1">{purpose}</p>
+            <div className="flex items-center gap-1 mt-1 text-sm text-gray-500">
+              <Calendar className="w-4 h-4" />
+              <span>Due {format(dueDate, 'PP')}</span>
+            </div>
           </div>
         </div>
         <p className={cn(
